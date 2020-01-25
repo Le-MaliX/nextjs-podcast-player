@@ -6,11 +6,13 @@ const Header = () => (
     <Link href="/">
       <header>Podcast</header>
     </Link>
+
+    {/* Styles */}
     <style jsx>
       {`
         header {
           color: #FFF;
-          background: #8756ca;
+          background: #222;
           padding: 15px;
           text-align: center;
           cursor: pointer;
@@ -19,9 +21,10 @@ const Header = () => (
     </style>
     <style jsx global>
       {`
+        @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
         body {
           margin: 0;
-          font-family: system-ui;
+          font-family: 'Open Sans', sans-serif;
           background: #EEE;
         }
       `}

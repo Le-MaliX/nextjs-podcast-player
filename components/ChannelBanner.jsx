@@ -8,6 +8,7 @@ const ChannelBanner = ({ url, title }) => (
     />
     <h1>{title}</h1>
 
+    {/* Styles */}
     <style jsx>
       {`
         .banner {

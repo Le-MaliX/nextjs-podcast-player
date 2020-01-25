@@ -19,6 +19,7 @@ const ChannelClip = ({
       </span>
     </Link>
 
+    {/* Styles */}
     <style jsx>
       {`
       .podcast {
