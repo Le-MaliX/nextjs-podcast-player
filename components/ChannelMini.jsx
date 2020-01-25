@@ -1,28 +1,30 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import Link from 'next/link';
 
-const Channel = ({
+const ChannelMini = ({
   channel: {
-    title,
-    urls: {
+    id, title, urls: {
       logo_image: { original },
     },
   },
 }) => (
   <>
-    <a href="#!" className="channel">
-      <img src={original} alt="" />
-      <h2>{title}</h2>
-    </a>
+    <Link href={`/channel?id=${id}`}>
+      <span className="channel">
+        <img src={original} alt="" />
+        <h2>{title}</h2>
+      </span>
+    </Link>
 
     {/* Styles */}
     <style jsx>
       {`
-      a.channel {
+      span.channel {
         display: block;
         margin-bottom: 0.5em;
         color: #333;
-        text-decoration: none;
+        cursor: pointer;
       }
       .channel img {
         border-radius: 3px;
@@ -41,9 +43,9 @@ const Channel = ({
   </>
 );
 
-Channel.propTypes = {
+ChannelMini.propTypes = {
   // eslint-disable-next-line react/forbid-prop-types
   channel: PropTypes.object.isRequired,
 };
 
-export default Channel;
+export default ChannelMini;
