@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import 'isomorphic-fetch';
-import Header from '../components/Header';
-import ChannelMini from '../components/ChannelMini';
+import Layout from '../components/Layout';
+import ChannelGrid from '../components/ChannelGrid';
 
 class Index extends Component {
   static async getInitialProps() {
@@ -20,24 +20,9 @@ class Index extends Component {
     const { channels, message } = this.props;
     if (message) return <h1>{message}</h1>;
     return (
-      <>
-        <Header />
-        <div className="channels">
-          {channels.map((channel) => <ChannelMini key={channel.id} channel={channel} />)}
-        </div>
-
-        {/* Styles */}
-        <style jsx>
-          {`
-            .channels {
-              display: grid;
-              grid-gap: 15px;
-              padding: 15px;
-              grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            }
-          `}
-        </style>
-      </>
+      <Layout title="Podcasts">
+        <ChannelGrid channels={channels} />
+      </Layout>
     );
   }
 }

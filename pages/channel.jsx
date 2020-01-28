@@ -2,10 +2,10 @@
 /* eslint-disable react/forbid-prop-types */
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
-import Header from '../components/Header';
+import Layout from '../components/Layout';
 import ChannelBanner from '../components/ChannelBanner';
-import ChannelMini from '../components/ChannelMini';
 import ChannelClip from '../components/ChannelClip';
+import ChannelGrid from '../components/ChannelGrid';
 
 class Channel extends Component {
   static async getInitialProps({ query: { id } }) {
@@ -39,22 +39,14 @@ class Channel extends Component {
     } = this.props;
     if (message) return <h1>{message}</h1>;
     return (
-      <>
-        <Header />
+      <Layout title={`${title}`}>
         <ChannelBanner url={original} title={title} />
 
         {channels.length > 0
           && (
             <div>
               <h2>Series</h2>
-              <div className="channels">
-                {channels.map((channel) => (
-                  <ChannelMini
-                    key={channel.id}
-                    channel={channel}
-                  />
-                ))}
-              </div>
+              <ChannelGrid channels={channels} />
             </div>
           )}
 
@@ -75,15 +67,9 @@ class Channel extends Component {
               margin: 0;
               text-align: center;
             }
-            .channels {
-              display: grid;
-              grid-gap: 15px;
-              padding: 15px;
-              grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            }
           `}
         </style>
-      </>
+      </Layout>
     );
   }
 }
