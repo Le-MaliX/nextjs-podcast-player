@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
-import Error from 'next/error';
 import 'isomorphic-fetch';
+import Error from './_error';
 import Layout from '../components/Layout';
 import ChannelGrid from '../components/ChannelGrid';
 
