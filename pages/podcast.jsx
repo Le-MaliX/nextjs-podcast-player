@@ -6,10 +6,15 @@ import PodcastPicture from '../components/PodcastPicture';
 import AudioPlayer from '../components/AudioPlayer';
 
 class Podcast extends React.Component {
-  static async getInitialProps({ query: { id } }) {
-    const fetchClip = await fetch(`https://api.audioboom.com/audio_clips/${id}.mp3`);
-    const { body: { audio_clip } } = await fetchClip.json();
-    return { audio_clip };
+  static async getInitialProps({ query: { id } }, res) {
+    try {
+      const fetchClip = await fetch(`https://api.audioboom.com/audio_clips/${id}.mp3`);
+      const { body: { audio_clip } } = await fetchClip.json();
+      return { audio_clip };
+    } catch (e) {
+      res.statusCode = 503;
+      return ({ channels: [], statusCode: 503 });
+    }
   }
 
   render() {

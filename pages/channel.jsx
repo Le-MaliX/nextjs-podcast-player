@@ -2,45 +2,62 @@
 /* eslint-disable react/forbid-prop-types */
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
+import Error from 'next/error';
 import Layout from '../components/Layout';
 import ChannelBanner from '../components/ChannelBanner';
 import ChannelClip from '../components/ChannelClip';
 import ChannelGrid from '../components/ChannelGrid';
 
 class Channel extends Component {
-  static async getInitialProps({ query: { id } }) {
+  static async getInitialProps({ query: { id }, res }) {
     try {
       const [reqChannel, reqAudios, reqChilds] = await Promise.all([
         fetch(`https://api.audioboom.com/channels/${id}`),
         fetch(`https://api.audioboom.com/channels/${id}/audio_clips`),
         fetch(`https://api.audioboom.com/channels/${id}/child_channels`),
       ]);
+
+      if (
+        reqChannel.status >= 400
+        || reqAudios.status >= 400
+        || reqChilds.status >= 400
+      ) {
+        res.statusCode = Math.max(reqChannel.status, reqAudios.status, reqChilds.status);
+        return {
+          channels: [], audio_clips: [], title: '', urls: {}, statusCode: res.statusCode,
+        };
+      }
+
       const {
-        body: { channel: { title, urls: { banner_image: { original } } } },
+        body: { channel: { title, urls } },
       } = await reqChannel.json();
       const { body: { audio_clips } } = await reqAudios.json();
       const { body: { channels } } = await reqChilds.json();
+
       return {
-        title, original, audio_clips, channels,
+        title, urls, audio_clips, channels, statusCode: 200,
       };
-    } catch ({ message }) {
-      return (message);
+    } catch (e) {
+      return ({
+        channels: [], audio_clips: [], title: '', urls: {}, statusCode: 503,
+      });
     }
   }
 
   render() {
     const {
       title,
-      original,
+      urls,
       audio_clips,
       channels,
-      // eslint-disable-next-line react/prop-types
-      message,
+      statusCode,
     } = this.props;
-    if (message) return <h1>{message}</h1>;
+    if (statusCode !== 200) {
+      return <Error statusCode={statusCode} />;
+    }
     return (
       <Layout title={`${title}`}>
-        <ChannelBanner url={original} title={title} />
+        <ChannelBanner url={urls.banner_image.original || urls.logo_image.original} title={title} />
 
         {channels.length > 0
           && (
@@ -76,13 +93,10 @@ class Channel extends Component {
 
 Channel.propTypes = {
   title: PropTypes.string.isRequired,
-  original: PropTypes.string.isRequired,
+  urls: PropTypes.object.isRequired,
   audio_clips: PropTypes.array.isRequired,
-  channels: PropTypes.array,
-};
-
-Channel.defaultProps = {
-  channels: [],
+  channels: PropTypes.array.isRequired,
+  statusCode: PropTypes.number.isRequired,
 };
 
 export default Channel;
