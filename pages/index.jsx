@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import 'isomorphic-fetch';
 import Error from './_error';
 import Layout from '../components/Layout';
 import ChannelGrid from '../components/ChannelGrid';
 
-class Index extends Component {
+class Index extends React.Component {
   static async getInitialProps({ res }) {
     try {
       const req = await fetch('https://api.audioboom.com/channels/recommended');
@@ -32,7 +31,6 @@ class Index extends Component {
 }
 
 Index.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
   channels: PropTypes.array.isRequired,
 };
 

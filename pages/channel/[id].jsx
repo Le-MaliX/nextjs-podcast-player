@@ -1,12 +1,11 @@
 /* eslint-disable camelcase */
-/* eslint-disable react/forbid-prop-types */
 import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import Error from 'next/error';
-import Layout from '../components/Layout';
-import ChannelBanner from '../components/ChannelBanner';
-import ChannelClip from '../components/ChannelClip';
-import ChannelGrid from '../components/ChannelGrid';
+import Layout from '../../components/Layout';
+import ChannelBanner from '../../components/ChannelBanner';
+import ChannelClip from '../../components/ChannelClip';
+import ChannelGrid from '../../components/ChannelGrid';
 
 class Channel extends Component {
   static async getInitialProps({ query: { id }, res }) {

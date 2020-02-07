@@ -1,4 +1,3 @@
-import React from 'react';
 import { PropTypes } from 'prop-types';
 import ChannelMini from './ChannelMini';
 
@@ -23,7 +22,6 @@ const ChannelGrid = ({ channels }) => (
 );
 
 ChannelGrid.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
   channels: PropTypes.array.isRequired,
 };
 

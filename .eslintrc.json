@@ -10,7 +10,8 @@
     ],
     "globals": {
         "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
+        "SharedArrayBuffer": "readonly",
+        "React": "writable"
     },
     "parserOptions": {
         "ecmaFeatures": {
@@ -23,5 +24,9 @@
         "react"
     ],
     "rules": {
-    }
+        "jsx-a11y/anchor-is-valid": 0,
+        "react/forbid-prop-types": 0,
+        "react/react-in-jsx-scope": "off"
+    },
+    "parser": "babel-eslint"
 }

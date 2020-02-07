@@ -1,4 +1,3 @@
-import React from 'react';
 import { PropTypes } from 'prop-types';
 import Link from 'next/link';
 
@@ -10,7 +9,7 @@ const ChannelMini = ({
   },
 }) => (
   <>
-    <Link href={`/channel?id=${id}`}>
+    <Link href="/channel/[id]" as={`/channel/${id}`}>
       <span className="channel">
         <img src={original} alt="" />
         <h2>{title}</h2>
@@ -44,7 +43,6 @@ const ChannelMini = ({
 );
 
 ChannelMini.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
   channel: PropTypes.object.isRequired,
 };
 

@@ -1,4 +1,3 @@
-import React from 'react';
 import { PropTypes } from 'prop-types';
 import Link from 'next/link';
 
@@ -8,7 +7,7 @@ const ChannelClip = ({
   },
 }) => (
   <>
-    <Link href={`/podcast?id=${id}`}>
+    <Link href="/podcast/[id]" as={`/podcast/${id}`}>
       <span className="podcast">
         <h3>{title}</h3>
         <div className="meta">
@@ -54,7 +53,6 @@ const ChannelClip = ({
 );
 
 ChannelClip.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
   clip: PropTypes.object.isRequired,
 };
 

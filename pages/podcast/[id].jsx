@@ -1,9 +1,8 @@
 /* eslint-disable camelcase */
-import React from 'react';
 import { PropTypes } from 'prop-types';
-import NavBack from '../components/NavBack';
-import PodcastPicture from '../components/PodcastPicture';
-import AudioPlayer from '../components/AudioPlayer';
+import NavBack from '../../components/NavBack';
+import PodcastPicture from '../../components/PodcastPicture';
+import AudioPlayer from '../../components/AudioPlayer';
 
 class Podcast extends React.Component {
   static async getInitialProps({ query: { id } }, res) {
@@ -73,7 +72,6 @@ class Podcast extends React.Component {
 }
 
 Podcast.propTypes = {
-  // eslint-disable-next-line react/forbid-prop-types
   audio_clip: PropTypes.object.isRequired,
 };
 

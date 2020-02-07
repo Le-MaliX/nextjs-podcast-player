@@ -1,11 +1,10 @@
-import React from 'react';
 import { PropTypes } from 'prop-types';
 import Link from 'next/link';
 
 const NavBack = ({ id }) => (
   <>
     <nav>
-      <Link href={`/channel?id=${id}`}>
+      <Link href="/channel/[id]" as={`/channel/${id}`}>
         <h6 className="close">
           <span>&#11164;</span>
           {' '}
