@@ -1,12 +1,23 @@
 import Link from 'next/link';
 import Head from 'next/head';
+import NProgress from 'nprogress';
+import Router from 'next/router';
+
 import { PropTypes } from 'prop-types';
+
+Router.events.on('routeChangeStart', () => {
+  NProgress.start();
+});
+Router.events.on('routeChangeComplete', () => NProgress.done());
+Router.events.on('routeChangeError', () => NProgress.done());
 
 const Layout = ({ children, title }) => (
   <>
     <Head>
       <title>{ title }</title>
       <meta name="viewport" content="width=device-width, initial-scale=1" />
+      {/* Import CSS for nprogress */}
+      <link rel="stylesheet" type="text/css" href="/nprogress.css" />
     </Head>
     <Link href="/">
       <header>Podcasts</header>
