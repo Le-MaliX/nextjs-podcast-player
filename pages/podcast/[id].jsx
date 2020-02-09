@@ -43,7 +43,7 @@ class Podcast extends React.Component {
               display: flex;
               height: 100%;
               flex-direction: column;
-              background: #222;
+              background: #591F82;
               color: white;
             }
             .modal {

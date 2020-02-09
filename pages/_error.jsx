@@ -13,7 +13,13 @@ function Error({ statusCode }) {
               <br />
               ☹
             </h1>
-            <p><Link href="/"><span>Volver a home</span></Link></p>
+            <p>
+              <Link href="/">
+                <span>
+                  Volver a home
+                </span>
+              </Link>
+            </p>
           </div>
         )
         : (
@@ -41,7 +47,7 @@ function Error({ statusCode }) {
           }
           span {
             text-align: center;
-            color: #222;
+            color: #591F82;
             cursor: pointer;
           }
         `}

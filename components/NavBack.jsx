@@ -28,7 +28,7 @@ const NavBack = ({ id }) => (
           cursor: pointer;
           text-decoration: none;
           background: #FFF;
-          color: #222;
+          color: #591F82;
         }
         h6 {
           margin: 0;
