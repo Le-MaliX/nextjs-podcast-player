@@ -29,7 +29,6 @@
     "isomorphic-fetch": "^2.2.1",
     "next": "^9.2.0",
     "next-fonts": "^1.0.3",
-    "next-offline": "^5.0.0",
     "nprogress": "^0.2.0",
     "prop-types": "^15.7.2",
     "react": "^16.12.0",

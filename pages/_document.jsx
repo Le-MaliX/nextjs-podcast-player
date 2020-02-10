@@ -12,6 +12,7 @@ class MyDocument extends Document {
     return (
       <Html lang="es">
         <Head>
+          <meta charSet="UTF-8" />
           <meta
             name="description"
             content="Podcast Player app that consumes the Audioboom API, realized as a personal proyect for NextJS learning"

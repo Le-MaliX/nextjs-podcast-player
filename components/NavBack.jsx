@@ -6,14 +6,13 @@ const NavBack = ({ id }) => (
     <nav>
       <Link href="/channel/[id]" as={`/channel/${id}`}>
         <h6 className="close">
-          <span>&#11164;</span>
+          <span>&#x2039;</span>
           {' '}
           Volver
         </h6>
       </Link>
     </nav>
 
-    {/* Styles */}
     <style jsx>
       {`
         nav {
