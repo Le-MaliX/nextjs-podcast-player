@@ -23,7 +23,7 @@ const ChannelClip = ({
       {`
       .podcast {
           display: block;
-          color: #333;
+          color: #EEE;
           padding: 15px;
           border-bottom: 1px solid rgba(0,0,0,0.2);
           cursor: pointer;
@@ -35,7 +35,7 @@ const ChannelClip = ({
           margin: 0;
         }
         .podcast .meta {
-          color: #666;
+          color: #EEE;
           margin-top: 0.5em;
           font-size: 0.8em;
         }

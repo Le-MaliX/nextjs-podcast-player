@@ -22,7 +22,7 @@ const ChannelMini = ({
       span.channel {
         display: block;
         margin-bottom: 0.5em;
-        color: #333;
+        color: #EEE;
         cursor: pointer;
       }
       .channel img {
