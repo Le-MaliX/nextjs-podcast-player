@@ -35,7 +35,7 @@ const ChannelClip = ({
             cursor: pointer;
           }
           .podcast:hover {
-            color: #000;
+            color: #F9B200;
           }
           .podcast h3 {
             margin: 0;
