@@ -14,13 +14,15 @@ Router.events.on('routeChangeError', () => NProgress.done());
 const Layout = ({ children, title }) => (
   <>
     <Head>
-      <title>{ title }</title>
+      <title>{title}</title>
     </Head>
-    <Link href="/">
-      <header>Podcast Player</header>
-    </Link>
+    <header>
+      <Link href="/">
+        <div className="appName">Podcast Player</div>
+      </Link>
+    </header>
 
-    { children }
+    {children}
 
     {/* Styles */}
     <style jsx>
@@ -30,18 +32,22 @@ const Layout = ({ children, title }) => (
           src: url('/assets/fonts/hacked.ttf');
         }
         header {
+          display: flex;
+          background: #591F82;
+        }
+        .appName {
           font-family: 'hacked';
           color: #F9B200;
           padding: 15px;
           font-size: 30px;
           cursor: pointer;
-          background: #591F82;
+          width: 100%
         }
       `}
     </style>
     <style jsx global>
       {`
-        @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+        @import url('https://fonts.googleapis.com/css?family=Open+Sans|Ubuntu&display=swap');
         body {
           margin: 0;
           font-family: 'Open Sans', sans-serif;

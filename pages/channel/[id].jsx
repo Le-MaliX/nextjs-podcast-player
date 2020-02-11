@@ -13,13 +13,18 @@ const Channel = (props) => {
     audio_clips,
     channels,
     statusCode,
+    description,
   } = props;
   if (statusCode !== 200) {
     return <Error statusCode={statusCode} />;
   }
   return (
     <Layout title={`${title}`}>
-      <ChannelBanner url={urls.banner_image.original || urls.logo_image.original} title={title} />
+      <ChannelBanner
+        url={urls.banner_image.original || urls.logo_image.original}
+        title={title}
+        description={description}
+      />
 
       {channels.length > 0
         && (
@@ -40,11 +45,13 @@ const Channel = (props) => {
       <style jsx>
         {`
             h2 {
-              padding: 5px;
-              font-size: 0.9em;
+              font-family: 'Ubuntu', sans-serif;
+              padding: 5px 15px;
+              font-size: 1.5em;
               font-weight: 600;
               margin: 0;
               text-align: center;
+              color: #F9B200;
             }
           `}
       </style>
@@ -58,6 +65,7 @@ Channel.propTypes = {
   audio_clips: PropTypes.array.isRequired,
   channels: PropTypes.array.isRequired,
   statusCode: PropTypes.number.isRequired,
+  description: PropTypes.string.isRequired,
 };
 
 
@@ -76,22 +84,22 @@ Channel.getInitialProps = async ({ query: { id }, res }) => {
     ) {
       res.statusCode = Math.max(reqChannel.status, reqAudios.status, reqChilds.status);
       return {
-        channels: [], audio_clips: [], title: '', urls: {}, statusCode: res.statusCode,
+        channels: [], audio_clips: [], title: '', urls: {}, description: '', statusCode: res.statusCode,
       };
     }
 
     const {
-      body: { channel: { title, urls } },
+      body: { channel: { title, urls, description } },
     } = await reqChannel.json();
     const { body: { audio_clips } } = await reqAudios.json();
     const { body: { channels } } = await reqChilds.json();
 
     return {
-      title, urls, audio_clips, channels, statusCode: 200,
+      title, urls, description, audio_clips, channels, statusCode: 200,
     };
   } catch (e) {
     return ({
-      channels: [], audio_clips: [], title: '', urls: {}, statusCode: 503,
+      channels: [], audio_clips: [], title: '', urls: {}, description: '', statusCode: 503,
     });
   }
 };

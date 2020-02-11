@@ -41,16 +41,6 @@ const Podcast = ({ audio_clip }) => (
             }
           `}
     </style>
-    <style jsx global>
-      {`
-            @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
-            body {
-              margin: 0;
-              font-family: 'Open Sans', sans-serif;
-              background: #EEE;
-            }
-          `}
-    </style>
   </>
 );
 
