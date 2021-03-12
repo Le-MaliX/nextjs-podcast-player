@@ -50,7 +50,11 @@ Podcast.propTypes = {
 
 Podcast.getInitialProps = async ({ query: { id } }, res) => {
   try {
-    const fetchClip = await fetch(`https://api.audioboom.com/audio_clips/${id}.mp3`);
+    const fetchClip = await fetch(`https://api.audioboom.com/audio_clips/${id}.mp3`, {
+      headers: {
+        Accept: 'application/json; version=2',
+      },
+    });
     const { body: { audio_clip } } = await fetchClip.json();
     return { audio_clip };
   } catch (e) {

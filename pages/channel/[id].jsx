@@ -68,13 +68,24 @@ Channel.propTypes = {
   description: PropTypes.string.isRequired,
 };
 
-
 Channel.getInitialProps = async ({ query: { id }, res }) => {
   try {
     const [reqChannel, reqAudios, reqChilds] = await Promise.all([
-      fetch(`https://api.audioboom.com/channels/${id}`),
-      fetch(`https://api.audioboom.com/channels/${id}/audio_clips`),
-      fetch(`https://api.audioboom.com/channels/${id}/child_channels`),
+      fetch(`https://api.audioboom.com/channels/${id}`, {
+        headers: {
+          Accept: 'application/json; version=2',
+        },
+      }),
+      fetch(`https://api.audioboom.com/channels/${id}/audio_clips`, {
+        headers: {
+          Accept: 'application/json; version=2',
+        },
+      }),
+      fetch(`https://api.audioboom.com/channels/${id}/child_channels`, {
+        headers: {
+          Accept: 'application/json; version=2',
+        },
+      }),
     ]);
 
     if (

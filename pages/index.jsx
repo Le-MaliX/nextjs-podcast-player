@@ -19,7 +19,11 @@ const Index = ({ channels, statusCode }) => {
 
 Index.getInitialProps = async ({ res }) => {
   try {
-    const req = await fetch('https://api.audioboom.com/channels/recommended');
+    const req = await fetch('https://api.audioboom.com/channels/recommended', {
+      headers: {
+        Accept: 'application/json; version=2',
+      },
+    });
     const { body: channels } = await req.json();
     return { channels, statusCode: 200 };
   } catch (e) {

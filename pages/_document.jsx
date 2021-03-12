@@ -17,7 +17,6 @@ class MyDocument extends Document {
             name="description"
             content="Podcast Player app that consumes the Audioboom API, realized as a personal proyect for NextJS learning"
           />
-          <meta name="viewport" content="width=device-width, initial-scale=1" />
           {/* Import CSS for nprogress */}
           <link rel="stylesheet" type="text/css" href="/assets/css/nprogress.css" />
           {/* Favicons */}
